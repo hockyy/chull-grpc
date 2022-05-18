@@ -1,0 +1,26 @@
+syntax = "proto3";
+
+package proto;
+
+service ConvexHullFinder {
+  rpc FindConvexHull(ChullRequest) returns (ChullResponse);
+}
+
+message Points {
+  int32 x = 1;
+  int32 y = 2;
+}
+
+message ChullRequest {
+    uint32 n = 1;
+    repeated Points points = 2;
+    bool getArea = 3;
+    bool getPoints = 4;
+    string description = 5;
+}
+
+message ChullResponse {
+  optional double area = 1;
+  uint32 n = 2;
+  repeated Points hull = 3;
+}
