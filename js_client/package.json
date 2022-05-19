@@ -1,0 +1,13 @@
+{
+  "name": "nodejs_static",
+  "version": "1.0.0",
+  "license": "MIT",
+  "devDependencies": {
+    "grpc-tools": "^1.6.6",
+    "standard": "^12.0.1"
+  },
+  "dependencies": {
+    "google-protobuf": "^3.6.1",
+    "grpc": "^1.24.9"
+  }
+}

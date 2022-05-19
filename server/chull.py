@@ -1,16 +1,19 @@
 from collections import namedtuple
-
 Point = namedtuple('Point', 'x y')
 
 class ConvexHull(object):
-    _points = []
-    _hull_points = []
+    points = []
+    hull_points = []
 
     def __init__(self):
         pass
 
+    def clear(self):
+        self.points = []
+        self.hull_points = []
+
     def add(self, point):
-        self._points.append(point)
+        self.points.append(point)
 
     def _get_orientation(self, origin, p1, p2):
         '''
@@ -32,7 +35,7 @@ class ConvexHull(object):
         Computes the points that make up the convex hull.
         :return:
         '''
-        points = self._points
+        points = self.points
 
         # get leftmost point
         start = points[0]
@@ -43,7 +46,7 @@ class ConvexHull(object):
                 start = p
 
         point = start
-        self._hull_points.append(start)
+        self.hull_points.append(start)
 
         far_point = None
         while far_point is not start:
@@ -68,11 +71,11 @@ class ConvexHull(object):
                     if direction > 0:
                         far_point = p2
 
-            self._hull_points.append(far_point)
+            self.hull_points.append(far_point)
             point = far_point
 
     def get_hull_points(self):
-        if self._points and not self._hull_points:
+        if self.points and not self.hull_points:
             self.compute_hull()
 
-        return self._hull_points
+        return self.hull_points
